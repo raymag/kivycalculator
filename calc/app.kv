@@ -1,0 +1,95 @@
+<Calculator>:
+    orientation: "vertical"
+    title: "Calculadora"
+    Label:
+        text: ""
+        id: value
+        font_size: 65
+    BoxLayout:
+        Button:
+            text: "C"
+            id: zerar
+            on_release: value.text = ""
+        Button:
+            text: "/"
+            id: divisao
+            on_release: value.text = (value.text)+"/"
+        Button:
+            text: "x"
+            id: multiplicacao
+            on_release: value.text = (value.text)+"*"
+        Button:
+            text: "-"
+            id: subtrair
+            on_release: value.text = (value.text)+"-"
+    BoxLayout:
+        GridLayout:
+            cols: 3
+            rows: 3
+            Button:
+                text: "1"
+                id: number1
+                on_release: value.text = (value.text)+"1"
+                font_size: 50
+            Button:
+                text: "2"
+                id: number2
+                on_release: value.text = (value.text)+"2"
+                font_size: 50
+            Button:
+                text: "3"
+                id: number3
+                on_release: value.text = (value.text)+"3"
+                font_size: 50
+            Button:
+                text: "4"
+                id: number4
+                on_release: value.text = (value.text)+"4"
+                font_size: 50
+            Button:
+                text: "5"
+                id: number5
+                on_release: value.text = (value.text)+"5"
+                font_size: 50
+            Button:
+                text: "6"
+                id: number6
+                on_release: value.text = (value.text)+"6"
+                font_size: 50
+            Button:
+                text: "7"
+                id: number7
+                on_release: value.text = (value.text)+"7"
+                font_size: 50
+            Button:
+                text: "8"
+                id: number8
+                on_release: value.text = (value.text)+"8"
+                font_size: 50
+            Button:
+                text: "9"
+                id: number9
+                on_release: value.text = (value.text)+"9"
+                font_size: 50
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "0"
+                id: zero
+                on_release: value.text = (value.text)+"0"
+                font_size: 48
+            Button:
+                text: "+"
+                id: soma
+                on_release: value.text = (value.text)+"+"
+                font_size: 45
+            Button:
+                text: ","
+                id: virgula
+                on_release: value.text = (value.text)+"."
+                font_size: 45
+            Button:
+                text: "=="
+                id: resultado
+                font_size: 45
+                on_release: value.text = root.solve(value.text)

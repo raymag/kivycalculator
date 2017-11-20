@@ -1,34 +1,37 @@
+<btTurquesa@Button>:
+    background_color: [1, 2, 2, 1]
+<btAmarelo@Button>:
+
 <Calculator>:
     orientation: "vertical"
-    Label: #Campo de Operacoes
+    TextInput: #Campo de Operacoes
         text: ""
         id: value
         font_size: 65
         color: 0, 1, 0, 2
+        size_hint_y: 0.5
     BoxLayout: #Top Layout
+        size_hint_y: 0.5
         Button: #Reseta o campo de Operacoes
             text: "C"
             id: zerar
             on_release: value.text = ""
             background_color: [1, 2, 4, 2]
             font_size: 40
-        Button: #adiciona divisao ao campo
+        btTurquesa: #adiciona divisao ao campo
             text: "/"
             id: divisao
             on_release: value.text = (value.text)+"/"
-            background_color: [1, 2, 2, 1]
             font_size: 35
-        Button: #adiciona multiplicacao ao campo
+        btTurquesa: #adiciona multiplicacao ao campo
             text: "x"
             id: multiplicacao
             on_release: value.text = (value.text)+"*"
-            background_color: [1, 2, 2, 1]
             font_size: 35
-        Button: #Botao que invoca a funcao apagar do arquivo main
+        btTurquesa: #Botao que invoca a funcao apagar do arquivo main
             text: "<--"
             id: apagar
             on_release: value.text = root.apagar(value.text)
-            background_color: [1, 2, 2, 1]
         Button: #Botao que invoca a funcao Solve (resolver)
             text: "=="
             id: resultado
@@ -36,6 +39,7 @@
             background_color: [1, 2, 4, 2]
             on_release: value.text = root.solve(value.text)
     BoxLayout: #Mid Layout
+        size_hint_y: 1
         GridLayout: #Left Layout - Tecaldo Numerico
             cols: 3
             rows: 3
@@ -114,6 +118,7 @@
                 font_size: 45
                 background_color: [3, 2, 1, 1]
     BoxLayout: #Bottom Layout
+        size_hint_y: 0.5
         Button:
             text: "0"
             id: zero
@@ -123,7 +128,7 @@
         Button:
             text: "RaizQ"
             id: raizQ
-            on_release: value.text = (value.text)+"**(1/2)"
+            on_release: value.text = (value.text)+"**0.5"
             background_color: [1, 2, 1, 1]
             font_size: 35
         Button:

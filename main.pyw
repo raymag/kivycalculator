@@ -65,7 +65,7 @@ class Calculator(BoxLayout):
         return s
 
 class App(App):
-    title = "Wise - Calcs"
+    title = "WiseCalc"
     def build(self):
         return Calculator()
 if __name__ == '__main__':

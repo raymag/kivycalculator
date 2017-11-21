@@ -1,9 +1,22 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 <btTurquesa@Button>:
+    font_name: 'Ubuntu'
     background_color: [1, 2, 2, 1]
-<btAmarelo@Button>:
-
 <Calculator>:
     orientation: "vertical"
+
+    ActionBar:
+        background_color: get_color_from_hex('#0000FF')
+        ActionView:
+            ActionPrevious:
+                font_name: 'Ubuntu'
+                title: "     Wise - Calcs"
+                with_previous: False
+                app_icon: './icons/logo.png'
+                app_icon_height: 35
+                app_icon_width: 35
+
+
     TextInput: #Campo de Operacoes
         text: ""
         id: value
@@ -29,9 +42,15 @@
             on_release: value.text = (value.text)+"*"
             font_size: 35
         btTurquesa: #Botao que invoca a funcao apagar do arquivo main
-            text: "<--"
+            #text: "<--"
             id: apagar
             on_release: value.text = root.apagar(value.text)
+            Image:
+                source: './icons/back.png'
+                size: 35, 35
+                y : self.parent.y+39
+                x : self.parent.x+56
+                allow_stretch: True
         Button: #Botao que invoca a funcao Solve (resolver)
             text: "=="
             id: resultado
@@ -126,11 +145,17 @@
             font_size: 48
             background_color: [2, 1, 1, 1]
         Button:
-            text: "RaizQ"
+            #text: "RaizQ"
             id: raizQ
             on_release: value.text = (value.text)+"**0.5"
             background_color: [1, 2, 1, 1]
             font_size: 35
+            Image:
+                source: './icons/square-root.png'
+                x: self.parent.x+40
+                y: self.parent.y+20
+                size: 65, 65
+                allow_stretch: True
         Button:
             text: "Elevar"
             id: potencia

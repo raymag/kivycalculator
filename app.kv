@@ -6,6 +6,8 @@
     orientation: "vertical"
 
     ActionBar:
+        background_normal: ''
+        background_down: ''
         background_color: get_color_from_hex('#0000FF')
         ActionView:
             ActionPrevious:
@@ -40,7 +42,7 @@
             text: "x"
             id: multiplicacao
             on_release: value.text = (value.text)+"*"
-            font_size: 35
+            font_size: 45
         btTurquesa: #Botao que invoca a funcao apagar do arquivo main
             #text: "<--"
             id: apagar
@@ -48,8 +50,8 @@
             Image:
                 source: './icons/back.png'
                 size: 35, 35
-                y : self.parent.y+39
-                x : self.parent.x+56
+                y: self.parent.y+39
+                x: self.parent.x+56
                 allow_stretch: True
         Button: #Botao que invoca a funcao Solve (resolver)
             text: "=="

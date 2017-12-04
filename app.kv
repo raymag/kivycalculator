@@ -1,7 +1,4 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
-<btTurquesa@Button>:
-    font_name: 'Ubuntu'
-    background_color: [1, 2, 2, 1]
 <Calculator>:
     orientation: "vertical"
 
@@ -14,7 +11,7 @@
                 font_name: 'Ubuntu'
                 title: "     WiseCalc"
                 with_previous: False
-                app_icon: './icons/logo.png'
+                app_icon: './icons/owl.png'
                 app_icon_height: 35
                 app_icon_width: 35
 
@@ -23,16 +20,18 @@
         text: ""
         id: value
         font_size: 65
-        color: 0, 1, 0, 2
+        font_name: 'Ubuntu'
+        foreground_color: 1, 1, 1, 1
         size_hint_y: 0.5
+        background_color: get_color_from_hex('#2222222')
     BoxLayout: #Top Layout
         size_hint_y: 0.5
         Button: #Reseta o campo de Operacoes
             text: "C"
             id: zerar
             on_release: value.text = ""
-            background_color: [1, 2, 4, 2]
             font_size: 40
+            background_color: [1, 2, 4, 2]
         btTurquesa: #adiciona divisao ao campo
             text: "/"
             id: divisao
@@ -64,60 +63,44 @@
         GridLayout: #Left Layout - Tecaldo Numerico
             cols: 3
             rows: 3
-            Button:
+            Number:
                 text: "1"
                 id: number1
                 on_release: value.text = (value.text)+"1"
-                font_size: 50
-                background_color: [2, 1, 1, 1]
-            Button:
+            NumberLight:
                 text: "2"
                 id: number2
                 on_release: value.text = (value.text)+"2"
-                font_size: 50
-                background_color: [3, 1, 1, 1]
-            Button:
+            Number:
                 text: "3"
                 id: number3
                 on_release: value.text = (value.text)+"3"
-                font_size: 50
-                background_color: [2, 1, 1, 1]
-            Button:
+            NumberLight:
                 text: "4"
                 id: number4
                 on_release: value.text = (value.text)+"4"
-                font_size: 50
-                background_color: [3, 1, 1, 1]
-            Button:
+            Number:
                 text: "5"
                 id: number5
                 on_release: value.text = (value.text)+"5"
-                font_size: 50
-                background_color: [2, 1, 1, 1]
-            Button:
+            NumberLight:
                 text: "6"
                 id: number6
                 on_release: value.text = (value.text)+"6"
-                font_size: 50
-                background_color: [3, 1, 1, 1]
-            Button:
+            Number:
                 text: "7"
                 id: number7
                 on_release: value.text = (value.text)+"7"
-                font_size: 50
-                background_color: [2, 1, 1, 1]
-            Button:
+            NumberLight:
                 text: "8"
                 id: number8
                 on_release: value.text = (value.text)+"8"
                 font_size: 50
                 background_color: [3, 1, 1, 1]
-            Button:
+            Number:
                 text: "9"
                 id: number9
                 on_release: value.text = (value.text)+"9"
-                font_size: 50
-                background_color: [2, 1, 1, 1]
         BoxLayout: #Right Layout - Demais operadores
             orientation: "vertical"
             Button:
@@ -140,12 +123,10 @@
                 background_color: [3, 2, 1, 1]
     BoxLayout: #Bottom Layout
         size_hint_y: 0.5
-        Button:
+        Number:
             text: "0"
             id: zero
             on_release: value.text = (value.text)+"0"
-            font_size: 48
-            background_color: [2, 1, 1, 1]
         Button:
             #text: "RaizQ"
             id: raizQ
@@ -158,21 +139,32 @@
                 y: self.parent.y+20
                 size: 65, 65
                 allow_stretch: True
-        Button:
+        btGreen:
             text: "Elevar"
             id: potencia
             on_release: value.text = (value.text)+"**"
-            background_color: [1, 2, 1, 1]
-            font_size: 35
-        Button:
+        btGreen:
             text: "("
             id: abre_parenteses
             on_release: value.text = (value.text)+"("
-            background_color: [1, 2, 1, 1]
-            font_size: 35
-        Button:
+        btGreen:
             text: ")"
             id: fecha_parenteses
             on_release: value.text = (value.text)+")"
-            background_color: [1, 2, 1, 1]
-            font_size: 35
+        btGreen:
+            text: "Log(x)"
+            id: log
+            on_release: value.text = root.log10(value.text)
+<Number@Button>:
+    font_name: 'pixel_lcd'
+    font_size: 60
+    background_color: [2, 1, 1, 1]
+<NumberLight@Number>:
+    background_color: [3, 1, 1, 1]
+<btTurquesa@Button>:
+    font_name: 'Ubuntu'
+    background_color: [1, 2, 2, 1]
+<btGreen@Button>:
+    font_name: 'Ubuntu'
+    font_size: 35
+    background_color: [1, 2, 1, 1]

@@ -3,12 +3,27 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.core.text import LabelBase
+import math
 
 LabelBase.register(name='Ubuntu',
                 fn_regular='./fonts/UbuntuCondensed-Regular.ttf',
                 fn_bold='./fonts/UbuntuCondensed-Regular.ttf')
-
+LabelBase.register(name='pixel_lcd',
+                   fn_regular='./fonts/Pixel-lcd-machine.ttf',
+                   fn_bold='./fonts/Pixel-lcd-machine.ttf')
+#Pixel-lcd-machine
 class Calculator(BoxLayout):
+    def log10(self, text):
+        if text == '':
+            return '0'
+        elif text == '0':
+            return 'Inexistente'
+        try:
+            text = self.solve(text)
+            s = str(math.log10(float(text)))
+        except:
+            s = 'Erro'
+        return s
     def fix(self, text): #Verifica a existencia de erros de escrita no TextInput
         operators = ['*', '+', '/', '.']
         repeated_operators = ['++', '//', '..', '--', '***']
@@ -44,7 +59,7 @@ class Calculator(BoxLayout):
             wrong = False
             if text[0] in operators or ')' == text[0]:
                 text = text[1:]
-                print(text)
+                #print(text)
                 wrong = True
             if text[-1] in operators or '-' in text[-1]:
                 text = text[:-1]
@@ -65,7 +80,9 @@ class Calculator(BoxLayout):
         return s
 
 class App(App):
+    icon = 'icons/logo.png'
     title = "WiseCalc"
+    __version__ = "1.0"
     def build(self):
         return Calculator()
 if __name__ == '__main__':
